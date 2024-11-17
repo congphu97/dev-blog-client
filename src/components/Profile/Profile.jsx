@@ -1,11 +1,18 @@
 import React from "react";
 import "./Profile.scss";
+import { MdNotifications } from "react-icons/md";
 
 const ProfileComponent = () => {
   return (
-    <div className="profile">
+    <div className="profile-container">
+      <div className="new-post">
+        <button className="new-post-btn">New post</button>
+      </div>
+      <MdNotifications className="notification-icon" />
       {/* TODO: Add profile image */}
-      <span className="profile-name">DEV</span>
+      <div className="profile-image-container">
+        <span className="profile-name">DEV</span>
+      </div>
     </div>
   );
 };
