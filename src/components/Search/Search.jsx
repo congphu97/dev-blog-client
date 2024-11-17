@@ -5,6 +5,7 @@ import "./Search.scss";
 
 const SearchComponent = () => {
   const [searchKeywords, setSearchKeywords] = useState("");
+  const [selectedItem, setSelectedItem] = useState(null);
 
   const keywords = [
     "Apple",
@@ -29,8 +30,9 @@ const SearchComponent = () => {
   // Handle click on a result item
   const handleItemClick = (item) => {
     // TODO: Add logic to handle item click
-    setSearchKeywords(item); // Update the search bar with the clicked item
-    console.log("submit", item);
+    setSearchKeywords(""); // Update the search bar with the clicked item
+    setSelectedItem(item);
+    console.log("selected item:", selectedItem);
   };
 
   return (
