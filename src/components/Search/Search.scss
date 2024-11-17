@@ -1,0 +1,101 @@
+@import "../../../public/scss/variables";
+
+.search-container {
+  min-width: 400px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: $gunmetal;
+  position: relative;
+
+  .search-bar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: $gunmetal;
+
+    .search-icon {
+      margin-right: 15px;
+      font-size: 25px;
+      color: $light-steel-blue;
+    }
+
+    .clear-icon {
+      font-size: 25px;
+      position: absolute;
+      right: 10px;
+    }
+
+    .search-input-field {
+      flex: 1;
+      border: none;
+      background-color: $gunmetal;
+      color: whitesmoke;
+      font-size: 17px;
+
+      &::placeholder {
+        color: $light-steel-blue;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .search-suggestions {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-height: 500px;
+    overflow-y: auto;
+    background-color: $gunmetal;
+    border-radius: 10px;
+    box-sizing: border-box;
+    z-index: 1;
+
+    .search-suggestion {
+      text-align: justify;
+      padding: 10px;
+      cursor: pointer;
+      color: $light-steel-blue;
+      border-bottom: 1px solid #3c4147;
+    }
+
+    .search-suggestion:last-child {
+      border-bottom: none;
+    }
+
+    .search-suggestion:hover {
+      background-color: #3c4147;
+    }
+
+    .search-no-results {
+      text-align: center;
+      padding: 10px;
+      color: $light-steel-blue;
+      border-bottom: 1px solid #3c4147;
+    }
+
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: $gunmetal;
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background-color: $light-steel-blue;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      opacity: 0.8;
+    }
+  }
+}
