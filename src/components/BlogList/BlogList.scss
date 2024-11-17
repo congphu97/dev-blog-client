@@ -1,11 +1,11 @@
 @import "../../../public/scss/variables";
 
-.lists-container {
+.blog-list-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
 
-  .list-item {
+  .blog-list-item {
     width: 300px;
     height: 350px;
     border: 1px solid $charcoal-blue-gray;
@@ -16,14 +16,14 @@
     flex-direction: column;
     justify-content: space-between;
 
-    .list-item-title {
+    .blog-list-item-title {
       line-height: 1.5;
       color: #e0e0e0;
       overflow: hidden;
       text-overflow: ellipsis;
       margin-bottom: 8px;
 
-      .list-item-txt {
+      .blog-list-item-txt {
         font-size: 20px;
         font-weight: 700;
         height: 150px;
@@ -33,11 +33,11 @@
       }
     }
 
-    .list-item-timestamp {
+    .blog-list-item-timestamp {
       margin-top: 20px;
     }
 
-    .list-item-image {
+    .blog-list-item-image {
       height: 150px;
 
       img {
@@ -48,20 +48,20 @@
       }
     }
 
-    .list-item-actions {
+    .blog-list-item-actions {
       display: flex;
       gap: 10px;
       justify-content: space-between;
       align-items: center;
 
-      .list-item-reactions,
-      .list-item-comments {
+      .blog-list-item-reactions,
+      .blog-list-item-comments {
         display: flex;
         align-items: center;
         gap: 10px;
       }
 
-      .list-item-icon {
+      .blog-list-item-icon {
         font-size: 20px;
         cursor: pointer;
       }

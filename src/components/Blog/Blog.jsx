@@ -1,14 +1,14 @@
 import React from "react";
 import { FaPlus } from "react-icons/fa";
 import { HiAdjustmentsHorizontal } from "react-icons/hi2";
-import { ListsComponent } from "../index";
-import "./Content.scss";
+import "./Blog.scss";
+import BlogListComponent from "../BlogList/BlogList";
 
-const ContentComponent = () => {
+const BlogComponent = () => {
   return (
-    <div className="content-main">
+    <div className="blog-wrapper">
       {/* TODO: Will change another UI */}
-      <div className="content-extension">
+      <div className="blog-extension">
         <button className="extension-btn">
           <HiAdjustmentsHorizontal className="extension-icon" />
           <span className="text">Feed settings</span>
@@ -18,9 +18,9 @@ const ContentComponent = () => {
           <span className="extension-text">Shortcuts</span>
         </button>
       </div>
-      <ListsComponent></ListsComponent>
+      <BlogListComponent></BlogListComponent>
     </div>
   );
 };
 
-export default ContentComponent;
+export default BlogComponent;

@@ -1,5 +1,5 @@
 import SearchComponent from "./Search/Search";
 import ProfileComponent from "./Profile/Profile";
-import ListsComponent from "./Lists/Lists";
+import BlogListComponent from "./BlogList/BlogList";
 
-export { SearchComponent, ProfileComponent, ListsComponent };
+export { SearchComponent, ProfileComponent, BlogListComponent };

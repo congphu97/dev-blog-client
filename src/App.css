@@ -8,7 +8,7 @@ body {
   top: 0;
 }
 
-.content-container {
+.blog-container {
   display: flex;
 }
 
@@ -18,6 +18,6 @@ body {
   border-right: 1px solid #3c4147;
 }
 
-.main-content {
+.blog-list {
   flex: 1;
 }

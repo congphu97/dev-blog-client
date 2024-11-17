@@ -1,6 +1,6 @@
 import "./App.css";
+import BlogComponent from "./components/Blog/Blog";
 import HeaderComponent from "./components/Header/Header";
-import ContentComponent from "./components/Content/Content";
 
 function App() {
   return (
@@ -8,10 +8,10 @@ function App() {
       <div className="sticky-header">
         <HeaderComponent></HeaderComponent>
       </div>
-      <div className="content-container">
+      <div className="blog-container">
         <div className="left-sidebar">left sidebar</div>
-        <div className="main-content">
-          <ContentComponent></ContentComponent>
+        <div className="blog-list">
+          <BlogComponent></BlogComponent>
         </div>
       </div>
     </div>

@@ -7,9 +7,9 @@ import {
 } from "react-icons/ai";
 import { FaLink } from "react-icons/fa6";
 import { LiaComment } from "react-icons/lia";
-import "./List.scss";
+import "./BlogList.scss";
 
-const ListsComponent = () => {
+const BlogListsComponent = () => {
   const [lists, setLists] = useState([
     {
       id: 1,
@@ -193,39 +193,39 @@ const ListsComponent = () => {
   };
 
   return (
-    <div className="lists-container">
+    <div className="blog-list-container">
       {lists.map((item) => (
-        <div className="list-item" key={item.id}>
-          <div className="list-item-title">
-            <span className="list-item-txt">{item.title}</span>
+        <div className="blog-list-item" key={item?.id}>
+          <div className="blog-list-item-title">
+            <span className="blog-list-item-txt">{item?.title}</span>
           </div>
-          <div className="list-item-timestamp">{item.timestamp}</div>
-          <div className="list-item-image">
-            <img src={item.image} alt="img" />
+          <div className="blog-list-item-timestamp">{item?.timestamp}</div>
+          <div className="blog-list-item-image">
+            <img src={item?.image} alt="img" />
           </div>
-          <div className="list-item-actions">
-            <div className="list-item-reactions">
+          <div className="blog-list-item-actions">
+            <div className="blog-list-item-reactions">
               <span
-                className="list-item-icon"
-                onClick={() => handleLikeClick(item.id)}
+                className="blog-list-item-icon"
+                onClick={() => handleLikeClick(item?.id)}
               >
-                {item.isLiked ? <AiFillLike /> : <AiOutlineLike />}{" "}
-                {item.reactions.likes}
+                {item?.isLiked ? <AiFillLike /> : <AiOutlineLike />}{" "}
+                {item?.reactions?.likes}
               </span>
               <span
-                className="list-item-icon"
-                onClick={() => handleDisLikeClick(item.id)}
+                className="blog-list-item-icon"
+                onClick={() => handleDisLikeClick(item?.id)}
               >
-                {item.isDisLiked ? <AiFillDislike /> : <AiOutlineDislike />}{" "}
-                {item.reactions.dislikes}
+                {item?.isDisLiked ? <AiFillDislike /> : <AiOutlineDislike />}{" "}
+                {item?.reactions?.dislikes}
               </span>
             </div>
-            <div className="list-item-comments">
-              <LiaComment className="list-item-icon" /> {item.comments}
+            <div className="blog-list-item-comments">
+              <LiaComment className="blog-list-item-icon" /> {item?.comments}
             </div>
 
-            <div className="list-item-copy-links">
-              <FaLink className="list-item-icon" />
+            <div className="blog-list-item-copy-links">
+              <FaLink className="blog-list-item-icon" />
             </div>
           </div>
         </div>
@@ -234,4 +234,4 @@ const ListsComponent = () => {
   );
 };
 
-export default ListsComponent;
+export default BlogListsComponent;
