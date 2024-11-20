@@ -5,9 +5,22 @@ import {
   AiOutlineDislike,
   AiOutlineLike,
 } from "react-icons/ai";
+
+import { useQuery, gql } from '@apollo/client';
 import { FaLink } from "react-icons/fa6";
 import { LiaComment } from "react-icons/lia";
 import "./BlogList.scss";
+
+const GET_BLOGS = gql`
+  query GetBlogs  {
+      id
+      title
+      content
+      createdAt
+      reference
+      imageUrl
+    }
+`;
 
 const BlogListsComponent = () => {
   const [lists, setLists] = useState([
@@ -159,15 +172,15 @@ const BlogListsComponent = () => {
       prevLists.map((item) =>
         item.id === id
           ? {
-              ...item,
-              isLiked: !item.isLiked,
-              reactions: {
-                ...item.reactions,
-                likes: item.isLiked
-                  ? item.reactions.likes - 1
-                  : item.reactions.likes + 1,
-              },
-            }
+            ...item,
+            isLiked: !item.isLiked,
+            reactions: {
+              ...item.reactions,
+              likes: item.isLiked
+                ? item.reactions.likes - 1
+                : item.reactions.likes + 1,
+            },
+          }
           : item
       )
     );
@@ -178,24 +191,31 @@ const BlogListsComponent = () => {
       prevLists.map((item) =>
         item.id === id
           ? {
-              ...item,
-              isDisLiked: !item.isDisLiked,
-              reactions: {
-                ...item.reactions,
-                dislikes: item.isDisLiked
-                  ? item.reactions.dislikes - 1
-                  : item.reactions.dislikes + 1,
-              },
-            }
+            ...item,
+            isDisLiked: !item.isDisLiked,
+            reactions: {
+              ...item.reactions,
+              dislikes: item.isDisLiked
+                ? item.reactions.dislikes - 1
+                : item.reactions.dislikes + 1,
+            },
+          }
           : item
       )
     );
   };
 
+  const { loading, error, data } = useQuery(GET_BLOGS);  // Hook to fetch data
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
+  console.log({data})
+
+
   return (
     <div className="blog-list-container">
-      {lists.map((item) => (
-        <div className="blog-list-item" key={item?.id}>
+      {data.length > 0 && data.map((item) => (
+        <div className="blog-list-item" key={item.id}>
           <div className="blog-list-item-title">
             <span className="blog-list-item-txt">{item?.title}</span>
           </div>
