@@ -16,9 +16,13 @@
       background-color: whitesmoke;
       transition: background-color 0.3s ease-in-out;
 
-      &:hover,
-      &:focus {
+      &:hover {
+        transition: all 0.3s ease-in-out;
         background-color: $light-steel-blue;
+        outline: none;
+      }
+
+      &:focus {
         outline: none;
       }
     }
