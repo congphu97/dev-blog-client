@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   AiFillDislike,
   AiFillLike,
@@ -25,149 +25,18 @@ const GET_BLOGS = gql`
 `;
 
 const BlogListsComponent = () => {
-  const [lists, setLists] = useState([
-    {
-      id: 1,
-      title:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit, Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      timestamp: "Nov 17",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwyDvG74hXU-tEysrQqKtQX5TgxEDdxX-jYg&s",
-      reactions: {
-        likes: 0,
-        dislikes: 0,
-      },
-      comments: 0,
-      isLiked: false,
-      isDisliked: false,
-    },
-    {
-      id: 2,
-      title: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      timestamp: "Nov 18",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwyDvG74hXU-tEysrQqKtQX5TgxEDdxX-jYg&s",
-      reactions: {
-        likes: 0,
-        dislikes: 0,
-      },
-      comments: 0,
-      isLiked: false,
-      isDisliked: false,
-    },
-    {
-      id: 3,
-      title: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      timestamp: "Nov 19",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwyDvG74hXU-tEysrQqKtQX5TgxEDdxX-jYg&s",
-      reactions: {
-        likes: 0,
-        dislikes: 0,
-      },
-      comments: 0,
-      isLiked: false,
-      isDisliked: false,
-    },
-    {
-      id: 4,
-      title: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      timestamp: "Nov 20",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwyDvG74hXU-tEysrQqKtQX5TgxEDdxX-jYg&s",
-      reactions: {
-        likes: 0,
-        dislikes: 0,
-      },
-      comments: 0,
-      isLiked: false,
-      isDisliked: false,
-    },
-    {
-      id: 5,
-      title: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      timestamp: "Nov 21",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwyDvG74hXU-tEysrQqKtQX5TgxEDdxX-jYg&s",
-      reactions: {
-        likes: 0,
-        dislikes: 0,
-      },
-      comments: 0,
-      isLiked: false,
-      isDisliked: false,
-    },
-    {
-      id: 6,
-      title: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      timestamp: "Nov 22",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwyDvG74hXU-tEysrQqKtQX5TgxEDdxX-jYg&s",
-      reactions: {
-        likes: 0,
-        dislikes: 0,
-      },
-      comments: 0,
-      isLiked: false,
-      isDisliked: false,
-    },
-    {
-      id: 7,
-      title: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      timestamp: "Nov 23",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwyDvG74hXU-tEysrQqKtQX5TgxEDdxX-jYg&s",
-      reactions: {
-        likes: 0,
-        dislikes: 0,
-      },
-      comments: 0,
-      isLiked: false,
-      isDisliked: false,
-    },
-    {
-      id: 8,
-      title: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      timestamp: "Nov 24",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwyDvG74hXU-tEysrQqKtQX5TgxEDdxX-jYg&s",
-      reactions: {
-        likes: 0,
-        dislikes: 0,
-      },
-      comments: 0,
-      isLiked: false,
-      isDisliked: false,
-    },
-    {
-      id: 9,
-      title: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      timestamp: "Nov 25",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwyDvG74hXU-tEysrQqKtQX5TgxEDdxX-jYg&s",
-      reactions: {
-        likes: 0,
-        dislikes: 0,
-      },
-      comments: 0,
-      isLiked: false,
-      isDisliked: false,
-    },
-    {
-      id: 10,
-      title: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      timestamp: "Nov 26",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwyDvG74hXU-tEysrQqKtQX5TgxEDdxX-jYg&s",
-      reactions: {
-        likes: 0,
-        dislikes: 0,
-      },
-      comments: 0,
-      isLiked: false,
-      isDisliked: false,
-    },
-  ]);
+  const [list, setLists] = useState([]);
+  const { loading, error, data } = useQuery(GET_BLOGS);
+
+  useEffect(() => {
+    if (data) {
+      setLists(data.getBlogs);
+    }
+  }, [data]);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
 
   const handleLikeClick = (id) => {
     setLists((prevLists) =>
@@ -207,16 +76,9 @@ const BlogListsComponent = () => {
     );
   };
 
-  const { loading, error, data } = useQuery(GET_BLOGS);  // Hook to fetch data
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
-
-  console.log({data})
-
-
   return (
     <div className="blog-list-container">
-      {data?.getBlogs?.length > 0 && data?.getBlogs.map((item) => (
+      {list?.length > 0 && list.map((item) => (
         <div className="blog-list-item" key={item.id}>
           <div className="blog-list-item-title">
             <span className="blog-list-item-txt">{item?.title}</span>
