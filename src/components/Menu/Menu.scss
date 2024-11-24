@@ -1,0 +1,27 @@
+@import "../../../public/scss/variables";
+
+.menu-container {
+    width: 100%;
+
+    .menu-channel {
+        .menu-item {
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 5px;
+            transition: transform 0.2s ease, background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+
+            .menu-item__icon {
+                height: 14px;
+                width: 14px;
+                margin-right: 16px;
+            }
+
+            &:hover, &.active {
+                background: $light-active;
+            }
+        }
+    }
+}
