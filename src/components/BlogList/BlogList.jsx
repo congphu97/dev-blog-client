@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import moment from "moment";
 import {
   AiFillDislike,
   AiFillLike,
@@ -30,7 +31,14 @@ const BlogListsComponent = () => {
 
   useEffect(() => {
     if (data) {
-      setLists(data.getBlogs);
+      const blogs = data.getBlogs.map((blog) => {
+        return {
+          ...blog,
+          createdAt: moment(blog.createdAt).format("lll"),
+        };
+      });
+
+      setLists(blogs);
     }
   }, [data]);
 
@@ -83,9 +91,9 @@ const BlogListsComponent = () => {
             <div className="blog-list-item-title">
               <span className="blog-list-item-txt">{item?.title}</span>
             </div>
-            <div className="blog-list-item-timestamp">{item?.timestamp}</div>
+            <div className="blog-list-item-timestamp">{item?.createdAt}</div>
             <div className="blog-list-item-image">
-              <img src={item?.image} alt="img" />
+              <img src={item?.imageUrl} alt="img" />
             </div>
             <div className="blog-list-item-actions">
               <div className="blog-list-item-reactions">

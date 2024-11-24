@@ -7,7 +7,7 @@ const HeaderComponent = () => {
     <header>
       <div className="header">
         <div className="logo" onClick={() => console.log("go to homepage")}>
-          <img className="logo_img" src="/assets/images/logo-dark-mode.png" />
+          <img className="logo_img" src="/assets/images/logo-dark-mode.png" alt="logo-dark-mode"/>
         </div>
         <SearchComponent></SearchComponent>
         <ProfileComponent></ProfileComponent>
