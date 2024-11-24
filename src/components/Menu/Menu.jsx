@@ -2,7 +2,7 @@ import React from "react";
 import "./Menu.scss";
 import { useNavigate } from 'react-router-dom';
 import { GrHomeRounded, GrGlobe, GrMoney, GrHistory, GrBookmark   } from "react-icons/gr";
-import { LiaTachometerAltSolid } from "react-icons/lia";
+
 const MenuComponent = () => {
     const navigate = useNavigate();
     const handleClick = (path) => {
