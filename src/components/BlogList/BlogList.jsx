@@ -12,7 +12,8 @@ import { LiaComment } from "react-icons/lia";
 import "./BlogList.scss";
 
 const GET_BLOGS = gql`
-  query GetBlogs  {
+  query {
+    getBlogs  {
       id
       title
       content
@@ -20,6 +21,7 @@ const GET_BLOGS = gql`
       reference
       imageUrl
     }
+  }
 `;
 
 const BlogListsComponent = () => {
@@ -214,7 +216,7 @@ const BlogListsComponent = () => {
 
   return (
     <div className="blog-list-container">
-      {data.length > 0 && data.map((item) => (
+      {data?.getBlogs?.length > 0 && data?.getBlogs.map((item) => (
         <div className="blog-list-item" key={item.id}>
           <div className="blog-list-item-title">
             <span className="blog-list-item-txt">{item?.title}</span>
