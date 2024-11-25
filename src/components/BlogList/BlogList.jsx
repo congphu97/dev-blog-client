@@ -89,6 +89,7 @@ const BlogListsComponent = () => {
         list.map((item) => (
           <div className="blog-list-item" key={item.id}>
             <div className="blog-list-item-title">
+              <span className="blog-list-item-author"></span>
               <span className="blog-list-item-txt">{item?.title}</span>
             </div>
             <div className="blog-list-item-timestamp">{item?.createdAt}</div>
