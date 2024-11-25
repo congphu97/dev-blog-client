@@ -1,0 +1,22 @@
+.layout {
+  .sticky-header {
+    position: sticky;
+    top: 0;
+  }
+
+  .content-wrapper {
+    display: flex;
+    flex: 1;
+
+    .left-sidebar {
+      width: 300px;
+      min-height: 100vh;
+      border-right: 1px solid #3c4147;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 20px;
+    }
+  }
+}
