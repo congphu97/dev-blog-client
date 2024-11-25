@@ -11,7 +11,7 @@ const Layout = () => {
         <HeaderComponent></HeaderComponent>
       </div>
 
-      {/* Sidebar and Main Content */}
+      {/* Left Sidebar and Main Content */}
       <div className="content-wrapper">
         <div className="left-sidebar">
           <MenuComponent></MenuComponent>
@@ -19,6 +19,7 @@ const Layout = () => {
 
         {/* Main Content */}
         <main className="main-content">
+          {/* Renders the matching child route of a parent route or nothing if no child route matches. */}
           <Outlet />
         </main>
       </div>

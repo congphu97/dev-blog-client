@@ -1,31 +1,27 @@
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import LoginComponent from "./components/Auth/Login/Login";
-import RegisterComponent from "./components/Auth/Register/Register";
-import BlogComponent from "./components/Blog/Blog";
-import HeaderComponent from "./components/Header/Header";
-import MenuComponent from "./components/Menu/Menu";
+import BookmarksComponent from "./components/Bookmarks/Bookmarks";
+import DonateComponent from "./components/Donate/Donate";
+import HistoryComponent from "./components/History/History";
+import Layout from "./components/Layout/Layout";
 import PopularBlogsComponent from "./components/PopularBlogs/PopularBlogs";
-import { Route, Routes, Navigate } from "react-router-dom";
+import LoginComponent from "./pages/Auth/Login/Login";
+import HomeComponent from "./pages/Home/Home";
+import RegisterComponent from "./pages/Auth/Register/Register";
 
 function App() {
   return (
-    <div className="App">
-      <div className="sticky-header">
-        <HeaderComponent></HeaderComponent>
-      </div>
-      <div className="blog-container">
-        <div className="left-sidebar">
-          <MenuComponent></MenuComponent>
-        </div>
-        <div className="blog-list">
-          <Routes>
-            <Route path="/" element={<Navigate to="/home" />} />
-            <Route path="/home" element={<BlogComponent />} />
-            <Route path="/popular" element={<PopularBlogsComponent />} />
-          </Routes>
-        </div>
-      </div>
-    </div>
+    <Routes>
+      <Route path="login" element={<LoginComponent />} />
+      <Route path="register" element={<RegisterComponent />} />
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomeComponent />} />
+        <Route path="popular" element={<PopularBlogsComponent />} />
+        <Route path="bookmarks" element={<BookmarksComponent />} />
+        <Route path="history" element={<HistoryComponent />} />
+        <Route path="donate" element={<DonateComponent />} />
+      </Route>
+    </Routes>
   );
 }
 

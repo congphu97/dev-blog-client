@@ -1,14 +1,29 @@
 import React from "react";
 import "./Profile.scss";
 import { MdNotifications } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 const ProfileComponent = () => {
+  const navigate = useNavigate();
+  const handleClick = (path) => {
+    if (path) {
+      navigate(path);
+    }
+  };
+
   return (
     <div className="profile-container">
       {/* Auth */}
       <div className="auth-container">
-        <button className="sign-in-btn">Sign in</button>
-        <button className="sign-up-btn">Sign up</button>
+        <button className="sign-in-btn" onClick={() => handleClick("/login")}>
+          Sign in
+        </button>
+        <button
+          className="sign-up-btn"
+          onClick={() => handleClick("/register")}
+        >
+          Sign up
+        </button>
       </div>
 
       {/* Signed in */}
