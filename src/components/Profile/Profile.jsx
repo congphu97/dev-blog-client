@@ -1,7 +1,6 @@
 import React from "react";
-import "./Profile.scss";
-import { MdNotifications } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import "./Profile.scss";
 
 const ProfileComponent = () => {
   const navigate = useNavigate();
