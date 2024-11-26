@@ -3,7 +3,7 @@ import "./App.css";
 import BookmarksComponent from "./components/Bookmarks/Bookmarks";
 import DonateComponent from "./components/Donate/Donate";
 import HistoryComponent from "./components/History/History";
-import Layout from "./components/Layout/Layout";
+import Layout from "./components/layout/Layout";
 import PopularBlogsComponent from "./components/PopularBlogs/PopularBlogs";
 import LoginComponent from "./pages/Auth/Login/Login";
 import RegisterComponent from "./pages/Auth/Register/Register";
