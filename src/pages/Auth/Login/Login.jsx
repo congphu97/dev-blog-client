@@ -1,8 +1,16 @@
 import React from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import "./Login.scss";
+import { useNavigate } from "react-router-dom";
 
 const LoginComponent = () => {
+  const navigate = useNavigate();
+  const handleClick = (path) => {
+    if (path) {
+      navigate(path);
+    }
+  };
+
   return (
     <div className="login-container">
       <div class="login-logo">
@@ -13,10 +21,10 @@ const LoginComponent = () => {
         />
       </div>
       <div className="login-btn-groups">
-        <button className="login-btn">
+        <button className="login-btn" onClick={() => handleClick("/")}>
           <FaGoogle className="social-icon" /> Google
         </button>
-        <button className="login-btn">
+        <button className="login-btn" onClick={() => handleClick("/")}>
           <FaGithub className="social-icon" /> GitHub
         </button>
       </div>

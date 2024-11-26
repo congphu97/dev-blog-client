@@ -6,8 +6,8 @@ import HistoryComponent from "./components/History/History";
 import Layout from "./components/Layout/Layout";
 import PopularBlogsComponent from "./components/PopularBlogs/PopularBlogs";
 import LoginComponent from "./pages/Auth/Login/Login";
-import HomeComponent from "./pages/Home/Home";
 import RegisterComponent from "./pages/Auth/Register/Register";
+import HomeComponent from "./pages/Home/Home";
 
 function App() {
   return (
