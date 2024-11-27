@@ -1,18 +1,39 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./Profile.scss";
-import { MdNotifications } from "react-icons/md";
 
 const ProfileComponent = () => {
+  const navigate = useNavigate();
+  const handleClick = (path) => {
+    if (path) {
+      navigate(path);
+    }
+  };
+
   return (
     <div className="profile-container">
-      <div className="new-post">
+      {/* Auth */}
+      <div className="auth-container">
+        <button className="sign-in-btn" onClick={() => handleClick("/login")}>
+          Sign in
+        </button>
+        <button
+          className="sign-up-btn"
+          onClick={() => handleClick("/register")}
+        >
+          Sign up
+        </button>
+      </div>
+
+      {/* Signed in */}
+      {/* <div className="new-post">
         <button className="new-post-btn">New post</button>
-      </div>
-      <MdNotifications className="notification-icon" />
+      </div> */}
+      {/* <MdNotifications className="notification-icon" /> */}
       {/* TODO: Add profile image */}
-      <div className="profile-image-container">
+      {/* <div className="profile-image-container">
         <span className="profile-name">DEV</span>
-      </div>
+      </div> */}
     </div>
   );
 };
