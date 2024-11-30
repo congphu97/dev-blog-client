@@ -8,8 +8,10 @@ import PopularBlogsComponent from "./components/PopularBlogs/PopularBlogs";
 import LoginComponent from "./pages/Auth/Login/Login";
 import RegisterComponent from "./pages/Auth/Register/Register";
 import HomeComponent from "./pages/Home/Home";
+import GithubCallback from "./pages/Auth/GithubCallback/GithubCallback";
 
 function App() {
+  console.log(process.env);
   return (
     <Routes>
       <Route path="login" element={<LoginComponent />} />
@@ -21,6 +23,7 @@ function App() {
         <Route path="history" element={<HistoryComponent />} />
         <Route path="donate" element={<DonateComponent />} />
       </Route>
+      <Route path="auth/redirect" element={<GithubCallback />} />
     </Routes>
   );
 }

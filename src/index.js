@@ -8,7 +8,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 // Create an instance of Apollo Client
 const client = new ApolloClient({
-  uri: 'https://dev-blog-server-rgnj.onrender.com/graphql',  // Replace with your GraphQL API endpoint
+  uri: process.env.REACT_APP_DEV_BLOG_API_GRAPHQL,  // Replace with your GraphQL API endpoint
   cache: new InMemoryCache(), // Apollo cache for storing query results
   fetchOptions: {
     mode: 'no-cors',

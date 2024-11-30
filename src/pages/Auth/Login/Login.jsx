@@ -10,7 +10,9 @@ const LoginComponent = () => {
       navigate(path);
     }
   };
-
+  const GitHubLogin = () => {
+    window.location.href = `${process.env.REACT_APP_DEV_BLOG_API}/auth/github`; // This will initiate GitHub OAuth flow
+  };
   return (
     <div className="login-container">
       <div class="login-logo">
@@ -24,7 +26,7 @@ const LoginComponent = () => {
         <button className="login-btn" onClick={() => handleClick("/")}>
           <FaGoogle className="social-icon" /> Google
         </button>
-        <button className="login-btn" onClick={() => handleClick("/")}>
+        <button className="login-btn" onClick={() => GitHubLogin()}>
           <FaGithub className="social-icon" /> GitHub
         </button>
       </div>
