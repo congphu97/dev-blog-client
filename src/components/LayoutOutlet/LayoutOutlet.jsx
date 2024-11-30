@@ -2,9 +2,9 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import HeaderComponent from "../Header/Header";
 import MenuComponent from "../Menu/Menu";
-import "./Layout.scss";
+import "./LayoutOutlet.scss";
 
-const Layout = () => {
+const LayoutOutlet = () => {
   return (
     <div className="layout">
       <div className="sticky-header">
@@ -27,4 +27,4 @@ const Layout = () => {
   );
 };
 
-export default Layout;
+export default LayoutOutlet;
