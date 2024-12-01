@@ -1,37 +1,75 @@
 @import "../../../public/scss/variables";
 
-.blog-wrapper {
+.blog {
   padding: 2rem 2.5rem;
 
-  .blog-extension {
+  &__extension-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
     margin-bottom: 30px;
+  }
 
-    .extension-btn {
-      padding: 10px 20px;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 15px;
-      font-weight: 700;
-      border: none;
-      background-color: $gunmetal;
-      color: $light-steel-blue;
-      margin-right: 15px;
-      display: inline-flex;
-      align-items: center;
+  &__extension {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
 
-      &:hover {
-        color: whitesmoke;
-        transition: background-color 0.5s ease-in-out;
-      }
+  &__extension-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    background-color: $gunmetal;
+    color: $light-steel-blue;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
 
-      &:focus {
-        outline: none;
-      }
-
-      .extension-icon {
-        font-size: 20px;
-        margin-right: 10px;
-      }
+    &:hover {
+      color: whitesmoke;
+      transition: background-color 0.5s ease-in-out;
     }
+
+    &:focus {
+      outline: none;
+    }
+
+    &-img {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      overflow: hidden;
+    }
+  }
+
+  &__extension-btn-icon {
+    font-size: 25px;
+  }
+
+  &__extension-btn-text {
+    display: inline-block;
+    color: $light-steel-blue;
+    margin-top: 5px;
+  }
+
+  &__extension-btn-remove {
+    display: none;
+    position: absolute;
+    left: 42px;
+    bottom: 57px;
+    font-size: 30px;
+  }
+
+  &__extension:hover &__extension-btn-remove {
+    display: block;
+    color: $light-steel-blue;
+    cursor: pointer;
   }
 }
