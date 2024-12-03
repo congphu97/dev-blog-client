@@ -8,23 +8,27 @@ import PopularBlogsComponent from "./components/PopularBlogs/PopularBlogs";
 import LoginComponent from "./pages/Auth/Login/Login";
 import RegisterComponent from "./pages/Auth/Register/Register";
 import HomeComponent from "./pages/Home/Home";
-import GithubCallback from "./pages/Auth/GithubCallback/GithubCallback";
+import GithubCallback from "./pages/Auth/LoginCallback/GithubCallback";
+// import { GoogleOAuthProvider } from '@react-oauth/google';
 
 function App() {
   console.log(process.env);
   return (
-    <Routes>
-      <Route path="login" element={<LoginComponent />} />
-      <Route path="register" element={<RegisterComponent />} />
-      <Route path="/" element={<Layout />}>
-        <Route index element={<HomeComponent />} />
-        <Route path="popular" element={<PopularBlogsComponent />} />
-        <Route path="bookmarks" element={<BookmarksComponent />} />
-        <Route path="history" element={<HistoryComponent />} />
-        <Route path="donate" element={<DonateComponent />} />
-      </Route>
-      <Route path="auth/redirect" element={<GithubCallback />} />
-    </Routes>
+    // <GoogleOAuthProvider clientId="533166697541-2c3lsjg71lneadlk70uf4f1m9ma4ptag.apps.googleusercontent.com">
+      <Routes>
+        <Route path="login" element={<LoginComponent />} />
+        <Route path="register" element={<RegisterComponent />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomeComponent />} />
+          <Route path="popular" element={<PopularBlogsComponent />} />
+          <Route path="bookmarks" element={<BookmarksComponent />} />
+          <Route path="history" element={<HistoryComponent />} />
+          <Route path="donate" element={<DonateComponent />} />
+        </Route>
+        <Route path="auth/redirect" element={<GithubCallback />} />
+
+      </Routes>
+    // </GoogleOAuthProvider>
   );
 }
 
