@@ -17,7 +17,9 @@ const GitHubCallback = () => {
       const fetchUserData = async () => {
         try {
           // Replace with your actual API URL stored in environment variables
-          const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/github/validate`, {
+          const response = await axios.get(`https://dev-blog-server-rgnj.onrender.com/auth/github/validate`, {
+          // const response = await axios.get(`${process.env.REACT_APP_DEV_BLOG_API}/auth/github/validate`, {
+
             headers: {
               Authorization: `Bearer ${token}`,
             },
