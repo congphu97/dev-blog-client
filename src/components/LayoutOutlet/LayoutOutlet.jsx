@@ -12,11 +12,11 @@ const LayoutOutlet = () => {
 
       {/* Content */}
       <div className="content-wrapper">
-        <aside class="content-wrapper__sidebar">
+        <aside className="content-wrapper__sidebar">
           <MenuComponent></MenuComponent>
         </aside>
 
-        <main class="content-wrapper__main-content">
+        <main className="content-wrapper__main-content">
           <Outlet />
         </main>
       </div>
