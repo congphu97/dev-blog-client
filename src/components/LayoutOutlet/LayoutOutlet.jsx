@@ -7,19 +7,16 @@ import "./LayoutOutlet.scss";
 const LayoutOutlet = () => {
   return (
     <div className="layout">
-      <div className="sticky-header">
-        <HeaderComponent></HeaderComponent>
-      </div>
+      {/* Header */}
+      <HeaderComponent></HeaderComponent>
 
-      {/* Left Sidebar and Main Content */}
+      {/* Content */}
       <div className="content-wrapper">
-        <div className="left-sidebar">
+        <aside class="content-wrapper__sidebar">
           <MenuComponent></MenuComponent>
-        </div>
+        </aside>
 
-        {/* Main Content */}
-        <main className="main-content">
-          {/* Renders the matching child route of a parent route or nothing if no child route matches. */}
+        <main class="content-wrapper__main-content">
           <Outlet />
         </main>
       </div>

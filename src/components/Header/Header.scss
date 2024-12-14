@@ -1,6 +1,11 @@
 @import "../../../public/scss/variables";
 
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
   justify-content: space-between;
   align-items: center;
   display: flex;
@@ -8,6 +13,7 @@
   padding: 10px;
   background: $charcoal-black;
   color: whitesmoke;
+  z-index: 1000;
 
   &__logo {
     cursor: pointer;
@@ -17,5 +23,10 @@
     width: 100%;
     height: 30px;
     object-fit: contain;
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
   }
 }

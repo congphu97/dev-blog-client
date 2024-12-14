@@ -17,12 +17,12 @@ const ProfileComponent = () => {
         <button className="sign-in-btn" onClick={() => handleClick("/login")}>
           Sign in
         </button>
-        <button
+        {/* <button
           className="sign-up-btn"
           onClick={() => handleClick("/register")}
         >
           Sign up
-        </button>
+        </button> */}
       </div>
 
       {/* Signed in */}

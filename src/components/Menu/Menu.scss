@@ -1,27 +1,106 @@
 @import "../../../public/scss/variables";
 
 .menu-container {
-    width: 100%;
+  width: 100%;
 
-    .menu-channel {
-        .menu-item {
-            padding: 5px 10px;
-            cursor: pointer;
-            border-radius: 5px;
-            margin: 5px;
-            transition: transform 0.2s ease, background-color 0.3s ease;
-            display: flex;
-            align-items: center;
+  .menu-channel {
+    .menu-item {
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin: 5px;
+      transition: transform 0.2s ease, background-color 0.3s ease;
+      display: flex;
+      align-items: center;
 
-            .menu-item__icon {
-                height: 14px;
-                width: 14px;
-                margin-right: 16px;
-            }
+      .menu-item__icon,
+      .menu-item__text {
+        color: $light-steel-blue;
+      }
 
-            &:hover, &.active {
-                background: $light-active;
-            }
+      .menu-item__icon {
+        height: 14px;
+        width: 14px;
+        margin-right: 16px;
+      }
+
+      &:hover,
+      &.active {
+        background: $light-active;
+
+        .menu-item__icon,
+        .menu-item__text {
+          color: whitesmoke;
         }
+      }
     }
+  }
+}
+
+// Tablet Responsive
+@media (min-width: 768px) and (max-width: 1024px) {
+  .menu-container {
+    .menu-channel {
+      .menu-item {
+        flex-direction: column;
+        justify-content: center;
+
+        .menu-item__icon {
+          height: 25px;
+          width: 25px;
+          margin-right: 0;
+          text-align: center;
+        }
+
+        .menu-item__text {
+          font-size: 12px;
+        }
+
+        &:hover,
+        &.active {
+          background-color: transparent;
+
+          .menu-item__icon,
+          .menu-item__text {
+            color: whitesmoke;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Desktop Responsive
+@media (min-width: 1025px) {
+  .menu-container {
+    .menu-channel {
+      .menu-item {
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+
+        .menu-item__icon,
+        .menu-item__text {
+          color: $light-steel-blue;
+          font-size: 17px;
+        }
+
+        .menu-item__icon {
+          height: 14px;
+          width: 14px;
+          margin-right: 16px;
+        }
+
+        &:hover,
+        &.active {
+          background: $light-active;
+
+          .menu-item__icon,
+          .menu-item__text {
+            color: whitesmoke;
+          }
+        }
+      }
+    }
+  }
 }

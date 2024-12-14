@@ -87,38 +87,42 @@ const BlogListsComponent = () => {
     <div className="blog-list-container">
       {list?.length > 0 &&
         list.map((item) => (
-          <div className="blog-list-item" key={item.id}>
-            <div className="blog-list-item-title">
-              <span className="blog-list-item-author"></span>
-              <span className="blog-list-item-txt">{item?.title}</span>
+          <div className="blog-item" key={item.id}>
+            <div className="blog-item__title">
+              <span className="blog-item__txt">{item?.title}</span>
             </div>
-            <div className="blog-list-item-timestamp">{item?.createdAt}</div>
-            <div className="blog-list-item-image">
-              <img src={item?.imageUrl} alt="img" />
+
+            <div>
+              <div className="blog-item__timestamp">{item?.createdAt}</div>
+              <div className="blog-item__image">
+                <img src={item?.imageUrl} alt="img" />
+              </div>
             </div>
-            <div className="blog-list-item-actions">
-              <div className="blog-list-item-reactions">
+
+            <div className="blog-item-actions">
+              <div className="blog-item-actions__reactions">
                 <span
-                  className="blog-list-item-icon"
+                  className="blog-item-actions__icon"
                   onClick={() => handleLikeClick(item?.id)}
                 >
                   {item?.isLiked ? <AiFillLike /> : <AiOutlineLike />}{" "}
                   {item?.reactions?.likes}
                 </span>
                 <span
-                  className="blog-list-item-icon"
+                  className="blog-item-actions__icon"
                   onClick={() => handleDisLikeClick(item?.id)}
                 >
                   {item?.isDisLiked ? <AiFillDislike /> : <AiOutlineDislike />}{" "}
                   {item?.reactions?.dislikes}
                 </span>
               </div>
-              <div className="blog-list-item-comments">
-                <LiaComment className="blog-list-item-icon" /> {item?.comments}
+              <div className="blog-item__comments">
+                <LiaComment className="blog-item-actions__icon" />{" "}
+                {item?.comments}
               </div>
 
-              <div className="blog-list-item-copy-links">
-                <FaLink className="blog-list-item-icon" />
+              <div className="blog-item__copy-links">
+                <FaLink className="blog-item-actions__icon" />
               </div>
             </div>
           </div>

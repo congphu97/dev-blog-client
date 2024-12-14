@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { TiDelete } from "react-icons/ti";
 import "./Search.scss";
 
 const SearchComponent = () => {
+  const [width, setWidth] = useState(0);
   const [searchKeywords, setSearchKeywords] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
 
@@ -23,6 +24,8 @@ const SearchComponent = () => {
     "Mango",
   ];
 
+  const isDesktop = width > 1024;
+
   const filteredKeywords = keywords.filter((keyword) =>
     keyword.toLowerCase().includes(searchKeywords.toLowerCase())
   );
@@ -35,25 +38,37 @@ const SearchComponent = () => {
     console.log("selected item:", selectedItem);
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize(); // Set initial width
+    return () => window.removeEventListener("resize", handleResize);
+  }, [width]);
+
   return (
     <>
       <div className="search-container">
-        <div className="search-bar">
+        <button className={isDesktop ? "search-bar" : "search-bar-icon"}>
           <FaSearch className="search-icon" />
-          <input
-            type="text"
-            placeholder="Search"
-            className="search-input-field"
-            value={searchKeywords}
-            onChange={(e) => setSearchKeywords(e.target.value)}
-          />
+          {isDesktop && (
+            <input
+              type="text"
+              placeholder="Search"
+              className="search-input-field"
+              value={searchKeywords}
+              onChange={(e) => setSearchKeywords(e.target.value)}
+            />
+          )}
           {searchKeywords && (
             <TiDelete
               className="clear-icon"
               onClick={() => setSearchKeywords("")}
             />
           )}
-        </div>
+        </button>
 
         {searchKeywords && (
           <ul className="search-suggestions">

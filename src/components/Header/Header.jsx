@@ -21,8 +21,10 @@ const HeaderComponent = () => {
             alt="logo-dark-mode"
           />
         </div>
-        <SearchComponent />
-        <ProfileComponent />
+        <div className="header-actions">
+          <SearchComponent />
+          <ProfileComponent />
+        </div>
       </div>
     </header>
   );
