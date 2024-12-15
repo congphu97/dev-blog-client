@@ -20,7 +20,8 @@
     justify-content: space-between;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
-    overflow: hidden;
+    overflow: visible;
+    position: relative;
 
     &:hover {
       transform: translateY(-5px);
@@ -28,23 +29,26 @@
     }
 
     &__title {
+      font-size: 20px;
       line-height: 1.5;
       color: #e0e0e0;
       overflow: hidden;
       text-overflow: ellipsis;
       margin-bottom: 8px;
+      font-weight: 600;
 
       &__txt {
-        font-size: 20px;
-        font-weight: 700;
         display: -webkit-box;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
+        line-clamp: 3;
       }
     }
 
     &__timestamp {
       margin-bottom: 10px;
+      font-size: 12px;
+      color: $light-steel-blue;
     }
 
     &__image {
@@ -52,11 +56,53 @@
       overflow: hidden;
       border-radius: 10px;
       background: $light-active;
+      margin-bottom: 20px;
 
       img {
         width: 100%;
         height: 100%;
         object-fit: contain;
+      }
+    }
+
+    &-authors {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background-color: transparent;
+      margin-bottom: 10px;
+      border-radius: 8px;
+
+      &__avatar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 35px;
+        height: 35px;
+        overflow: hidden;
+        border-radius: 50%;
+        background: $light-active;
+      }
+
+      &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      &__name {
+        line-height: 1.3;
+        color: $off-white;
+      }
+
+      &__title {
+        font-size: 13px;
+        font-weight: bold;
+      }
+
+      &__positions {
+        font-size: 12px;
+        color: $light-steel-blue;
       }
     }
 
@@ -72,10 +118,17 @@
         align-items: center;
         gap: 10px;
       }
+    }
 
-      .blog-list-item-icon {
-        font-size: 20px;
-        cursor: pointer;
+    &-icon {
+      display: inline-block;
+      color: $light-steel-blue;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+
+      &:hover {
+        color: whitesmoke;
       }
     }
   }

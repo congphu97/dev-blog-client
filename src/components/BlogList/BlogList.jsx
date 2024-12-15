@@ -1,16 +1,15 @@
-import React, { useState, useEffect } from "react";
+import { gql, useQuery } from "@apollo/client";
 import moment from "moment";
+import React, { useEffect, useState } from "react";
 import {
-  AiFillDislike,
-  AiFillLike,
-  AiOutlineDislike,
-  AiOutlineLike,
-} from "react-icons/ai";
-
-import { useQuery, gql } from "@apollo/client";
+  FaHeart,
+  FaRegBookmark,
+  FaRegCommentAlt,
+  FaRegHeart,
+} from "react-icons/fa";
 import { FaLink } from "react-icons/fa6";
-import { LiaComment } from "react-icons/lia";
 import "./BlogList.scss";
+import Tooltip from "../../shared/Tooltip/Tooltip";
 
 const GET_BLOGS = gql`
   query {
@@ -34,6 +33,7 @@ const BlogListsComponent = () => {
       const blogs = data.getBlogs.map((blog) => {
         return {
           ...blog,
+          isLiked: false,
           createdAt: moment(blog.createdAt).format("lll"),
         };
       });
@@ -45,42 +45,14 @@ const BlogListsComponent = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
-  const handleLikeClick = (id) => {
-    setLists((prevLists) =>
-      prevLists.map((item) =>
-        item.id === id
-          ? {
-              ...item,
-              isLiked: !item.isLiked,
-              reactions: {
-                ...item.reactions,
-                likes: item.isLiked
-                  ? item.reactions.likes - 1
-                  : item.reactions.likes + 1,
-              },
-            }
-          : item
-      )
-    );
-  };
-
-  const handleDisLikeClick = (id) => {
-    setLists((prevLists) =>
-      prevLists.map((item) =>
-        item.id === id
-          ? {
-              ...item,
-              isDisLiked: !item.isDisLiked,
-              reactions: {
-                ...item.reactions,
-                dislikes: item.isDisLiked
-                  ? item.reactions.dislikes - 1
-                  : item.reactions.dislikes + 1,
-              },
-            }
-          : item
-      )
-    );
+  const handleReactionClick = (id) => {
+    setLists((prevList) => {
+      const updatedList = prevList.map((item) =>
+        item.id === id ? { ...item, isLiked: !item.isLiked } : item
+      );
+      console.log("list", updatedList);
+      return updatedList;
+    });
   };
 
   return (
@@ -88,41 +60,67 @@ const BlogListsComponent = () => {
       {list?.length > 0 &&
         list.map((item) => (
           <div className="blog-item" key={item.id}>
-            <div className="blog-item__title">
-              <span className="blog-item__txt">{item?.title}</span>
+            <div>
+              <div className="blog-item-authors">
+                <Tooltip text="Dev" position="bottom">
+                  <div className="blog-item-authors__avatar">
+                    <img
+                      className="blog-item-authors__image"
+                      src={item?.imageUrl}
+                      alt="img"
+                    />
+                  </div>
+                </Tooltip>
+                <div className="blog-item-authors__name">
+                  <div className="blog-item-authors__title">
+                    <span>Dev</span>
+                  </div>
+                  <div className="blog-item-authors__positions">
+                    <small>Software Engineer</small>
+                  </div>
+                </div>
+              </div>
+              <div className="blog-item__title">
+                <span className="blog-item__txt">{item?.title}</span>
+              </div>
             </div>
 
             <div>
-              <div className="blog-item__timestamp">{item?.createdAt}</div>
+              <div className="blog-item__timestamp">
+                Published • {item?.createdAt}
+              </div>
               <div className="blog-item__image">
                 <img src={item?.imageUrl} alt="img" />
               </div>
-            </div>
-
-            <div className="blog-item-actions">
-              <div className="blog-item-actions__reactions">
-                <span
-                  className="blog-item-actions__icon"
-                  onClick={() => handleLikeClick(item?.id)}
-                >
-                  {item?.isLiked ? <AiFillLike /> : <AiOutlineLike />}{" "}
-                  {item?.reactions?.likes}
-                </span>
-                <span
-                  className="blog-item-actions__icon"
-                  onClick={() => handleDisLikeClick(item?.id)}
-                >
-                  {item?.isDisLiked ? <AiFillDislike /> : <AiOutlineDislike />}{" "}
-                  {item?.reactions?.dislikes}
-                </span>
-              </div>
-              <div className="blog-item__comments">
-                <LiaComment className="blog-item-actions__icon" />{" "}
-                {item?.comments}
-              </div>
-
-              <div className="blog-item__copy-links">
-                <FaLink className="blog-item-actions__icon" />
+              <div className="blog-item-actions">
+                <div className="blog-item-actions__reactions">
+                  <div
+                    className="blog-item-icon"
+                    onClick={() => handleReactionClick(item?.id)}
+                  >
+                    <Tooltip
+                      text={item?.isLiked ? "Liked" : "Like"}
+                      position="top"
+                    >
+                      {item?.isLiked ? <FaHeart /> : <FaRegHeart />}
+                    </Tooltip>
+                  </div>
+                </div>
+                <div className="blog-item-actions__comments">
+                  <Tooltip text="Comments" position="top">
+                    <FaRegCommentAlt className="blog-item-icon" />
+                  </Tooltip>
+                </div>
+                <div className="blog-item-actions__bookmark">
+                  <Tooltip text="Bookmark" position="top">
+                    <FaRegBookmark className="blog-item-icon" />
+                  </Tooltip>
+                </div>
+                <div className="blog-item-item-actions__copy-links">
+                  <Tooltip text="Copy link" position="top">
+                    <FaLink className="blog-item-icon" />
+                  </Tooltip>
+                </div>
               </div>
             </div>
           </div>

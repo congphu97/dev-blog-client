@@ -24,8 +24,6 @@ const SearchComponent = () => {
     "Mango",
   ];
 
-  const isDesktop = width > 1024;
-
   const filteredKeywords = keywords.filter((keyword) =>
     keyword.toLowerCase().includes(searchKeywords.toLowerCase())
   );
@@ -48,12 +46,17 @@ const SearchComponent = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, [width]);
 
+  const isTablet = width >= 768 && width <= 1024;
+  const isDesktop = width > 1024;
+
   return (
     <>
       <div className="search-container">
-        <button className={isDesktop ? "search-bar" : "search-bar-icon"}>
+        <button
+          className={isDesktop || isTablet ? "search-bar" : "search-bar-icon"}
+        >
           <FaSearch className="search-icon" />
-          {isDesktop && (
+          {(isDesktop || isTablet) && (
             <input
               type="text"
               placeholder="Search"
