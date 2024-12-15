@@ -1,0 +1,35 @@
+@import "../../../public/scss/variables";
+
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  overflow: visible;
+
+  .tooltip-box {
+    position: absolute;
+    background-color: $off-white;
+    color: $charcoal-black;
+    padding: 5px 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+    font-size: 13px;
+    z-index: 9999;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: visible;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      border-width: 5px;
+      border-style: solid;
+      border-color: $off-white transparent transparent transparent;
+      transform: translateX(-50%);
+    }
+  }
+}
