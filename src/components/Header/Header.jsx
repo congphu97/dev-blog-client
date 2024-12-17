@@ -14,15 +14,17 @@ const HeaderComponent = () => {
   return (
     <header>
       <div className="header">
-        <div className="logo" onClick={() => handleClick("/")}>
+        <div className="header__logo" onClick={() => handleClick("/")}>
           <img
-            className="logo_img"
+            className="header__logo-img"
             src="/assets/images/logo-dark-mode.png"
             alt="logo-dark-mode"
           />
         </div>
-        <SearchComponent></SearchComponent>
-        <ProfileComponent></ProfileComponent>
+        <div className="header-actions">
+          <SearchComponent />
+          <ProfileComponent />
+        </div>
       </div>
     </header>
   );

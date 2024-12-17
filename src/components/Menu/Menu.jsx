@@ -30,7 +30,7 @@ const MenuComponent = () => {
           <div className="menu-item__icon">
             <GrHomeRounded />
           </div>
-          Home
+          <span className="menu-item__text">Home</span>
         </div>
         <div
           className={`menu-item ${isActive("/popular")}`}
@@ -39,7 +39,7 @@ const MenuComponent = () => {
           <div className="menu-item__icon">
             <GrGlobe />
           </div>
-          Popular
+          <span className="menu-item__text">Popular</span>
         </div>
         <div
           className={`menu-item ${isActive("/bookmarks")}`}
@@ -48,7 +48,7 @@ const MenuComponent = () => {
           <div className="menu-item__icon">
             <GrBookmark />
           </div>
-          Bookmarks
+          <span className="menu-item__text">Bookmarks</span>
         </div>
         <div
           className={`menu-item ${isActive("/history")}`}
@@ -57,7 +57,7 @@ const MenuComponent = () => {
           <div className="menu-item__icon">
             <GrHistory />
           </div>
-          History
+          <span className="menu-item__text">History</span>
         </div>
         <div
           className={`menu-item ${isActive("/donate")}`}
@@ -66,7 +66,7 @@ const MenuComponent = () => {
           <div className="menu-item__icon">
             <GrMoney />
           </div>
-          Donate
+          <span className="menu-item__text">Donate</span>
         </div>
       </div>
     </div>

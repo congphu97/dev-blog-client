@@ -15,7 +15,7 @@ const LoginComponent = () => {
   };
   return (
     <div className="login-container">
-      <div class="login-logo">
+      <div className="login-logo">
         <img
           className="login-logo-img"
           src="/assets/images/logo-dark-mode.png"

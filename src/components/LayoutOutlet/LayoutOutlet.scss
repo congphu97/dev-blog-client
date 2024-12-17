@@ -1,0 +1,63 @@
+@import "../../../public/scss/variables";
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  .content-wrapper {
+    display: flex;
+    flex: 1;
+    margin-top: 60px;
+    overflow: hidden;
+    height: calc(100vh - 60px);
+
+    &__sidebar {
+      width: 300px;
+      border-right: 1px solid $charcoal-blue-gray;
+      color: white;
+      padding: 10px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__main-content {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+  }
+}
+
+// Mobile Responsive
+@media (max-width: 767px) {
+  .layout {
+    .content-wrapper__sidebar {
+      display: none;
+    }
+  }
+}
+
+// Tablet Responsive
+@media (min-width: 768px) and (max-width: 1024px) {
+  .content-wrapper {
+    &__sidebar {
+      width: 64px !important;
+      padding: 5px;
+      border-right: 1px solid #3c4147;
+    }
+  }
+}
+
+// Desktop Responsive
+@media (min-width: 1025) {
+  .content-wrapper {
+    &__sidebar {
+      width: 300px;
+    }
+  }
+}

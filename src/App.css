@@ -1,23 +1,14 @@
-body {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
   background-color: #0e1217;
   color: whitesmoke;
-}
-
-.sticky-header {
-  position: sticky;
-  top: 0;
-}
-
-.blog-container {
-  display: flex;
-}
-
-.left-sidebar {
-  min-width: 300px;
-  min-height: 100vh;
-  border-right: 1px solid #3c4147;
-}
-
-.blog-list {
-  flex: 1;
+  overflow: hidden;
+  font-family: "Roboto", sans-serif;
 }
